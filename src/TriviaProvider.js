@@ -14,7 +14,7 @@ class TriviaProvider extends Component {
 			type: "",
 			difficulty: "",
 			question: "",
-			totalQuestions: 0,
+			totalQuestions: 5,
 			correct_answer: "",
 			answerArray: [],
 			trivia_categories: [
@@ -175,9 +175,10 @@ class TriviaProvider extends Component {
 			.replace(/&eacute;/g, "é")
 			.replace(/&rsquo;/g, "'")
 			.replace(/&ldquo;/g, "“")
-            .replace(/&rdquo;/g, "”")
-            .replace(/&shy;/g, "")
-            .replace(/&oacute/g, "ô")
+			.replace(/&rdquo;/g, "”")
+			.replace(/&shy;/g, "")
+			.replace(/&oacute;/g, "ô")
+			.replace(/&Eacute;/g, "É")
 	}
 
 	increaseQuestionsCounter = () => {

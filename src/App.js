@@ -1,19 +1,20 @@
-import React from 'react';
-import './App.css';
+import React from "react"
+import "./App.css"
 import { Switch, Route } from "react-router-dom"
 import Navbar from "./Navbar"
 import Footer from "./Footer"
 import Home from "./Home"
 import About from "./About"
 import Contact from "./Contact"
-import TriviaContainer from './TriviaContainer';
+import TriviaContainer from "./TriviaContainer"
+import TriviaStart from "./TriviaStart"
 
 const App = () => {
-  return (
+	return (
 		<div>
 			<Navbar />
 			<Switch>
-				<Route exact path='/' component={Home} />
+				<Route exact path='/' component={TriviaStart} />
 				<Route path='/about' component={About} />
 				<Route path='/contact' component={Contact} />
 				<Route path='/trivia' component={TriviaContainer} />
@@ -23,4 +24,4 @@ const App = () => {
 	)
 }
 
-export default App;
+export default App

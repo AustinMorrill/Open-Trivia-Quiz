@@ -6,10 +6,7 @@ body {
   background-size: 100vw;
   height: 100vh;
   text-align: center;
-}
-
-.none {
-  display: none;
+  font-family: 'Oswald', sans-serif;
 }
 
 body:before {
@@ -32,7 +29,6 @@ body:before {
   justify-content: space-evenly;
   align-items: center;
   font-size: 2rem;
-  /* background: linear-gradient(to bottom, rgba(176,244,230,1) 0%, rgba(103,234,202,1) 50%, rgba(18,211,207,1) 51%, rgba(176,244,230,1) 100%); */
   background: linear-gradient(to right, #67eaca, #12d3cf);
   height: 3rem;
   border: solid black .01rem;
@@ -60,7 +56,7 @@ a {
   color: #12d3cf
 }
 
-.mainContainer {
+.triviaStartContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -82,20 +78,54 @@ a {
   flex-wrap: wrap;
 }
 
-.categoryCheckbox {
-
-}
 
 .triviaContainer, .triviaContainer > form {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  font-size: 2rem;
 }
-
-
 
 .triviaCard {
   display: flex;
   flex-direction: column;
+}
+
+.questionCard {
+  border: solid black 2pt;
+  width: 80vw;
+  font-size: 1.8rem;
+}
+
+/* .questionCard > button {
+  width: 80%;
+  background: #67eaca;
+  margin: 2pt;
+  border-radius: 5pt;
+} */
+
+.btn-hover {
+    cursor: pointer;
+    height: 55px;
+    width: 80%;
+    margin: 6pt;
+    padding: 4pt; 
+    padding-left: 15pt;
+    text-align:left;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 15px;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, #12d3cf, #67eaca, #b0f4e6, #b0f4e6 );
+    box-shadow: 0 2px 5px 0 rgb(252, 249, 236, .4);
+    font-size: 1.5rem;
+}
+
+.btn-hover:hover {
+    background-position: 100% 0;
+    transition: all .6s ease-in-out;
+}
+
+.btn-hover:focus {
+    outline: none;
 }
