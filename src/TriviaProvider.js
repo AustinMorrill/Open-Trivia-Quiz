@@ -16,6 +16,7 @@ class TriviaProvider extends Component {
 			question: "",
 			totalQuestions: 5,
 			correct_answer: "",
+			correctCounter: 0,
 			answerArray: [],
 			trivia_categories: [
 				{
@@ -36,19 +37,19 @@ class TriviaProvider extends Component {
 				},
 				{
 					id: 13,
-					name: "Entertainment: Musicals & Theatres"
+					name: "Musicals & Theatres"
 				},
 				{
 					id: 14,
-					name: "Entertainment: Television"
+					name: "Television"
 				},
 				{
 					id: 15,
-					name: "Entertainment: Video Games"
+					name: "Video Games"
 				},
 				{
 					id: 16,
-					name: "Entertainment: Board Games"
+					name: "Board Games"
 				},
 				{
 					id: 17,
@@ -100,7 +101,7 @@ class TriviaProvider extends Component {
 				},
 				{
 					id: 29,
-					name: "Entertainment: Comics"
+					name: "Comics"
 				},
 				{
 					id: 30,
@@ -108,30 +109,57 @@ class TriviaProvider extends Component {
 				},
 				{
 					id: 31,
-					name: "Entertainment: Japanese Anime & Manga"
+					name: "Japanese Anime & Manga"
 				},
 				{
 					id: 32,
-					name: "Entertainment: Cartoon & Animations"
+					name: "Cartoon & Animations"
 				}
 			]
 		}
 	}
 
+	componentDidMount(){
+			Axios.get("https://opentdb.com/api_token.php?command=request").then(response => {
+				this.setState({
+					apiToken: response.data.token
+				})
+			})
+			console.log('provider mounted')
+	}
+
+	resetOptions = () => {
+		this.setState({
+			questionsArray: "",
+			questionsCounter: 0,
+			categories: [],
+			category: "",
+			type: "",
+			difficulty: "",
+			question: "",
+			totalQuestions: 5,
+			correct_answer: "",
+			correctCounter: 0,
+			answerArray: []
+		})
+	}
+
 	setOptions = (questions, categories, difficulty) => {
-		this.setState({ totalQuestions: questions, categories: categories, difficulty: difficulty })
-        setTimeout(()=>this.getXQuestions(1, categories, difficulty), 300)
-        setTimeout(()=>console.log('fired'), 1000)
+		this.setState(
+			{ totalQuestions: questions, categories: categories, difficulty: difficulty },
+			() => this.getXQuestions(1, categories, difficulty)
+			
+		)
 	}
 
 	getXQuestions = (questions, categories, difficulty) => {
-        console.log(this.state.questionsCounter, this.state.totalQuestions)
 		if (this.state.questionsCounter < this.state.totalQuestions) {
 			let newDifficulty = difficulty === "mixed" ? this.randomDifficulty() : difficulty
 			let categoryGet = categories[Math.floor(Math.random() * this.state.categories.length)]
 			Axios.get(
-				api + `amount=${questions}&category=${categoryGet}&difficulty=${newDifficulty}`
+				api + `amount=${questions}&category=${categoryGet}&difficulty=${newDifficulty}&token=${this.state.apiToken}`
 			).then(response => {
+				console.log(response)
 				const {
 					category,
 					type,
@@ -179,6 +207,7 @@ class TriviaProvider extends Component {
 			.replace(/&shy;/g, "")
 			.replace(/&oacute;/g, "ô")
 			.replace(/&Eacute;/g, "É")
+			.replace(/&euml;/g, "ë")
 	}
 
 	increaseQuestionsCounter = () => {
@@ -186,6 +215,7 @@ class TriviaProvider extends Component {
 			return { questionsCounter: prevState.questionsCounter + 1 }
 		})
 	}
+
 
 	randomChoice(arr) {
 		return arr[Math.floor(arr.length * Math.random())]
@@ -222,7 +252,8 @@ class TriviaProvider extends Component {
 					shuffleArray: this.shuffleArray,
 					unescapeHtml: this.unescapeHtml,
 					setOptions: this.setOptions,
-					increaseQuestionsCounter: this.increaseQuestionsCounter
+					increaseQuestionsCounter: this.increaseQuestionsCounter,
+					resetOptions: this.resetOptions
 				}}
 			>
 				{this.props.children}

@@ -1,0 +1,284 @@
+body {
+  font-size: 10pt;
+  margin: 0;
+  background-image: url('../imgs/trianglify.svg');
+  background-repeat: repeat;
+  background-attachment: true;
+  text-align: center;
+  font-family: 'Oswald', sans-serif;
+  color: #fcf9ec;
+  height: 100%;
+}
+
+.root {
+  height: 100%;
+}
+
+.route-wrapper {
+  position: relative;
+}
+
+.route-wrapper > div {
+  position: absolute;
+}
+
+/* .appContainer {
+  background: #67eaca;
+  animation: color-change 12s linear infinite alternate;
+}
+
+@keyframes color-change {
+  0% {
+    background: rgb(176, 244, 230);
+  }
+  33.3333% {
+    background: rgb(103, 234, 202);
+  }
+  66.666% {
+    background: rgb(18, 211, 207);
+  }
+  100% {
+    background: rgb(0, 173, 171);
+  }
+} */
+
+
+body:before {
+  content: " ";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    background: radial-gradient(circle at bottom, rgba(23, 151, 151, 0.4), rgba(0, 129, 127, .3));
+}
+
+.App {
+  text-align: center;
+}
+
+.navBar {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 2rem;
+  background: linear-gradient(to right, #67eaca, #12d3cf);
+  height: 3rem;
+  border: solid black;
+  border-width: 0 0 1pt 0;
+}
+
+a {
+  text-decoration: none;
+  color: #4b4a46;
+  text-shadow: .1rem .1rem .4rem rgba(252,249,236, 1);
+}
+
+.color1  {
+  color: #fcf9ec;
+}
+
+.color2 {
+  color: #b0f4e6;
+}
+
+.color3 {
+  color: #67eaca;
+}
+
+.color4 {
+  color: #12d3cf;
+}
+
+.triviaStartContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.triviaStart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  border: solid black 2pt;
+  border-radius: 30pt;
+  width: 85vw;
+  background-image: linear-gradient(rgb(203, 116, 50), rgb(204, 50, 63));
+  
+}
+
+.triviaStart > fieldset {
+  width: 80%;
+  flex-wrap: wrap;
+  background: linear-gradient(to left, rgba(0, 207, 207), rgba(0, 129, 127));
+}
+
+
+.triviaContainer, .triviaContainer > form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.triviaCard {
+  display: flex;
+  flex-direction: column;
+}
+
+.questionCard {
+  border: solid black 4pt;
+  width: 80vw;
+  font-size: 1.8rem;
+  border-radius: 5pt;
+  margin-top: 30pt;
+  padding-bottom: 10pt;
+  padding: 5pt;
+  background-image: linear-gradient(rgb(203, 116, 50), rgb(204, 50, 63));
+  box-shadow: 5px 5px rgba(204, 50, 63, 0.3),
+              10px 10px rgba(204, 50, 63, 0.2),
+              15px 15px rgba(204, 50, 63, 0.1),
+              20px 20px rgba(204, 50, 63, 0.05),
+              25px 25px rgba(204, 50, 63, 0.025);
+}
+
+
+/* .questionCard > button {
+  width: 80%;
+  background: #67eaca;
+  margin: 2pt;
+  border-radius: 5pt;
+} */
+
+.btn-hover {
+    cursor: pointer;
+    color: #cb7432;
+    height: 55px;
+    width: 80%;
+    margin: 6pt;
+    padding: 4pt; 
+    padding-left: 15pt;
+    text-align:left;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 15px;
+    border: solid black 1pt;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, #12d3cf, #67eaca, #b0f4e6, #12d3cf );
+    /* box-shadow: 0 1pt 2pt 0 rgb(252, 249, 236, .9); */
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.btn-hover-start {
+    cursor: pointer;
+    color: rgb(203, 116, 50);
+    height: 30pt;
+    width: 80pt;
+    margin: 6pt;
+    padding: 4pt; 
+    padding-left: 15pt;
+    text-align:left;
+    border: none;
+    background-size: 300% 100%;
+    border-radius: 15px;
+    border: solid black 1pt;
+    transition: all .6s ease-in-out;
+    background-image: linear-gradient(to right, #12d3cf, #67eaca, #b0f4e6, #b0f4e6 );
+    /* box-shadow: 0 2px 5px 0 rgb(252, 249, 236, .4); */
+    font-size: 1.5rem;
+}
+
+.btn-hover:hover {
+    background-position: 100% 0;
+    transition: all .6s ease-in-out;
+}
+
+.btn-hover-start:hover {
+    background-position: 100% 0;
+    transition: all .6s ease-in-out;
+}
+
+.btn-hover:focus {
+    outline: none;
+}
+
+.btn-hover-start:focus {
+    outline: none;
+}
+
+.selectOptions {
+  border: black solid 2pt;
+  background: linear-gradient(to bottom, rgb(18, 211, 207, .6), rgb(103, 234, 202, .7));
+  border-radius: 2pt;
+  
+}
+
+.selectOptionsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 10pt;
+  
+}
+
+.fieldset {
+  border: solid black 2pt;
+  border-radius: 35pt;
+}
+
+.checkBoxContainer, .fieldset  {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  text-align: center;
+  }
+
+.checkBox {
+  border: solid black 1pt;
+  background: linear-gradient(to bottom, rgb(18, 211, 207, .3), rgb(103, 234, 202, .3), rgb(18, 211, 207, .5) 50%);
+  border-radius: 15pt;
+  width: 163pt;
+  height: 33pt;
+  margin: 0pt 0pt 10pt 15pt;
+  padding-right: 6pt;
+}
+
+@media only screen and (min-width: 800px) {
+  .triviaStart {
+    width: 70%;    
+  }
+  .questionCard {
+    width: 65%;    
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+  .triviaStart {
+    width: 900px;  
+    font-size: 15pt;  
+  }
+  .questionCard {
+    width: 60%;    
+    font-size: 25pt;
+  }
+  .checkBox {
+    height: 40pt;
+  }
+  .btn-hover {
+    font-size: 25pt;
+  }
+  .btn-hover-start {
+    height: 60pt;
+    width: 150pt;
+    font-size: 30pt;
+    text-align: center;
+    padding-left: 0;
+  }
+}
