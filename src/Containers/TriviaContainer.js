@@ -127,6 +127,7 @@ class TriviaContainer extends Component {
 					<div className={triviaStarted}>
 						<div className='questionCard'>
 							<h1>You got {this.state.correctCounter} answers correct.</h1>
+							{/* <h1>{this.state.correctCounter / this.props.totalQuestions  .8) ? <div>test</div> : <div>test2</div>}</h1> */}
 							<br />
 							<Button
 								variant='outlined'

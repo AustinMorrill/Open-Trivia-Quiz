@@ -113,7 +113,7 @@ class TriviaStart extends Component {
 	return (
 		<div className='triviaStartContainer'>
 			<form className='triviaStart' onSubmit={this.handleSubmit}>
-				<label>Welcome to Trivia! Please choose your preferences for the upcoming game.</label>
+				<label className='welcomeMessage'>Welcome to Trivia! Please choose your preferences for the upcoming game.</label>
 				<div className='selectOptionsContainer'>
 					<FormControl className='selectOptions'>
 						<Select value={this.state.difficulty} onChange={this.handleChange} name='difficulty'>

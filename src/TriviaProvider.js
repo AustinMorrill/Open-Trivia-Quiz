@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from "react-html-parser"
 const { Provider, Consumer } = React.createContext()
 const api = "https://opentdb.com/api.php?"
+
+
 
 class TriviaProvider extends Component {
 	constructor() {
@@ -147,12 +150,13 @@ class TriviaProvider extends Component {
 	setOptions = (questions, categories, difficulty) => {
 		this.setState(
 			{ totalQuestions: questions, categories: categories, difficulty: difficulty },
-			() => this.getXQuestions(1, categories, difficulty)
+			()=>this.getXQuestions(1, categories, difficulty)
 			
 		)
 	}
 
 	getXQuestions = (questions, categories, difficulty) => {
+		console.log(ReactHtmlParser('&amp;'))
 		if (this.state.questionsCounter < this.state.totalQuestions) {
 			let newDifficulty = difficulty === "mixed" ? this.randomDifficulty() : difficulty
 			let categoryGet = categories[Math.floor(Math.random() * this.state.categories.length)]
